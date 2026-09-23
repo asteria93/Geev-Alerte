@@ -1,0 +1,124 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum KeywordMode {
+  ANY
+  ALL
+}
+
+enum LocationType {
+  CITY
+  POSTAL_CODE
+  COORDINATES
+}
+
+enum WorkerRunStatus {
+  IDLE
+  RUNNING
+  SUCCESS
+  ERROR
+}
+
+model Alert {
+  id               String            @id @default(cuid())
+  name             String
+  categories       Json
+  keywords         Json
+  keywordMode      KeywordMode
+  locationType     LocationType
+  locationValue    String
+  latitude         Float?
+  longitude        Float?
+  radiusKm         Int
+  frequencyMinutes Int
+  isActive         Boolean           @default(true)
+  lastCheckedAt    DateTime?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  detections       DetectedListing[]
+}
+
+model ListingSeen {
+  id         String   @id @default(cuid())
+  sourceName String
+  stableId   String
+  listingUrl String
+  detectedAt DateTime @default(now())
+
+  @@unique([sourceName, stableId])
+}
+
+model DetectedListing {
+  id               String   @id @default(cuid())
+  alertId          String
+  sourceName       String
+  stableId         String
+  title            String
+  category         String
+  location         String
+  publishedAt      DateTime?
+  detectedAt       DateTime @default(now())
+  imageUrl         String?
+  listingUrl       String
+  notificationSent Boolean  @default(false)
+
+  alert Alert @relation(fields: [alertId], references: [id], onDelete: Cascade)
+
+  @@index([alertId])
+  @@index([detectedAt])
+}
+
+model NotificationSettings {
+  id                Int      @id @default(1)
+  discordWebhookUrl String?
+  webPushEnabled    Boolean  @default(false)
+  discordEnabled    Boolean  @default(false)
+  telegramEnabled   Boolean  @default(false)
+  emailEnabled      Boolean  @default(false)
+  updatedAt         DateTime @updatedAt
+}
+
+model WebPushSubscription {
+  id        String   @id @default(cuid())
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  createdAt DateTime @default(now())
+}
+
+model WorkerState {
+  id            Int             @id @default(1)
+  status        WorkerRunStatus @default(IDLE)
+  lastRunAt     DateTime?
+  lastSuccessAt DateTime?
+  lastError     String?
+}
+
+model ExecutionLock {
+  name       String   @id
+  owner      String?
+  lockedUntil DateTime?
+  updatedAt  DateTime @updatedAt
+}
+
+model MockListing {
+  id           String   @id @default(cuid())
+  stableId     String   @unique
+  title        String
+  category     String
+  city         String
+  postalCode   String?
+  latitude     Float?
+  longitude    Float?
+  publishedAt  DateTime @default(now())
+  imageUrl     String?
+  listingUrl   String
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+}
