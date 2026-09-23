@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <header className="header">
             <h1>Geev Alerte</h1>
             <p className="subtitle">
-              Démonstration fonctionnelle avec source d'annonces mock (aucune intégration Geev non officielle)
+              Démonstration fonctionnelle avec source d&apos;annonces mock (aucune intégration Geev non officielle)
             </p>
             <Nav />
           </header>

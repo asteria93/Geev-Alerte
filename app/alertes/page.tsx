@@ -20,7 +20,6 @@ export default function AlertsPage() {
   const [error, setError] = useState<string | null>(null);
 
   async function load() {
-    setLoading(true);
     const response = await fetch("/api/alerts", { cache: "no-store" });
 
     if (!response.ok) {
@@ -35,7 +34,9 @@ export default function AlertsPage() {
   }
 
   useEffect(() => {
-    void load();
+    void (async () => {
+      await load();
+    })();
   }, []);
 
   async function toggleAlert(alert: Alert) {

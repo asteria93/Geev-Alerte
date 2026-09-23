@@ -35,7 +35,7 @@ export default function HistoryPage() {
     })();
   }, []);
 
-  if (loading) return <section className="card">Chargement de l'historique...</section>;
+  if (loading) return <section className="card">Chargement de l&apos;historique...</section>;
   if (error) return <section className="card error">{error}</section>;
 
   return (
@@ -53,7 +53,7 @@ export default function HistoryPage() {
                 {item.listing.locationLabel} — {new Date(item.detectedAt).toLocaleString()} —
                 {" "}
                 <a href={item.listing.url} target="_blank" rel="noreferrer">
-                  ouvrir l'annonce
+                  ouvrir l&apos;annonce
                 </a>
                 <br />
                 Notifications: {item.notificationResults.map((result) => `${result.channel}:${result.success ? "ok" : "ko"}`).join(", ") || "aucune"}

@@ -25,7 +25,6 @@ export default function DashboardPage() {
   const [running, setRunning] = useState(false);
 
   async function load() {
-    setLoading(true);
     setError(null);
     const response = await fetch("/api/dashboard", { cache: "no-store" });
 
@@ -41,7 +40,19 @@ export default function DashboardPage() {
   }
 
   useEffect(() => {
-    void load();
+    void (async () => {
+      const response = await fetch("/api/dashboard", { cache: "no-store" });
+
+      if (!response.ok) {
+        setError("Impossible de charger le dashboard.");
+        setLoading(false);
+        return;
+      }
+
+      const payload = (await response.json()) as DashboardData;
+      setData(payload);
+      setLoading(false);
+    })();
   }, []);
 
   async function runDetection() {
@@ -100,7 +111,7 @@ export default function DashboardPage() {
       <section className="card">
         <h2>Dernières annonces détectées</h2>
         {data.recentHistory.length === 0 ? (
-          <p className="muted">Aucune annonce détectée pour l'instant.</p>
+          <p className="muted">Aucune annonce détectée pour l&apos;instant.</p>
         ) : (
           <ul>
             {data.recentHistory.map((item) => (

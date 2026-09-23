@@ -33,6 +33,7 @@ export default function SettingsPage() {
   }
 
   async function save() {
+    if (!settings) return;
     setMessage(null);
     const response = await fetch("/api/settings/notifications", {
       method: "PUT",
