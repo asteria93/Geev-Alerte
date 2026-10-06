@@ -1,0 +1,129 @@
+{
+  "alerts": [
+    {
+      "id": "37d20dbc-cc43-4896-b35e-9be777d5c3e8",
+      "name": "Alerte Jeux Paris",
+      "category": "jeux-video",
+      "keywordMode": "ANY",
+      "keywords": [
+        "PS4",
+        "manette"
+      ],
+      "locationId": "paris-75010",
+      "locationLabel": "Paris 75010",
+      "latitude": 48.8769,
+      "longitude": 2.3591,
+      "radiusKm": 20,
+      "enabled": true,
+      "createdAt": "2026-09-23T18:50:46.425Z",
+      "updatedAt": "2026-09-23T18:50:46.425Z"
+    }
+  ],
+  "history": [
+    {
+      "id": "62dc84a1-83e3-44fb-a335-090a6a11f341",
+      "alertId": "37d20dbc-cc43-4896-b35e-9be777d5c3e8",
+      "alertName": "Alerte Jeux Paris",
+      "listing": {
+        "title": "PS4 Pro + manette neuve",
+        "description": "Annonce test injectée",
+        "category": "jeux-video",
+        "locationLabel": "Paris 75010",
+        "latitude": 48.8769,
+        "longitude": 2.3591,
+        "url": "https://example.invalid/test-new",
+        "id": "1fe0cc9c-1c40-48fc-aae7-d8712f621676",
+        "publishedAt": "2026-09-23T18:50:46.621Z"
+      },
+      "detectedAt": "2026-09-23T18:50:46.632Z",
+      "notificationResults": [
+        {
+          "channel": "mock",
+          "success": true,
+          "message": "Notification mock envoyée (aucun service externe contacté)"
+        }
+      ]
+    },
+    {
+      "id": "375b9995-b0cb-4053-b737-917201b5cdd8",
+      "alertId": "37d20dbc-cc43-4896-b35e-9be777d5c3e8",
+      "alertName": "Alerte Jeux Paris",
+      "listing": {
+        "id": "listing-1",
+        "title": "PS4 + manette",
+        "description": "Console en bon état avec une manette officielle.",
+        "category": "jeux-video",
+        "locationLabel": "Paris 75010",
+        "latitude": 48.8769,
+        "longitude": 2.3591,
+        "url": "https://example.invalid/listing-1",
+        "publishedAt": "2026-09-23T18:50:46.425Z"
+      },
+      "detectedAt": "2026-09-23T18:50:46.520Z",
+      "notificationResults": [
+        {
+          "channel": "mock",
+          "success": true,
+          "message": "Notification mock envoyée (aucun service externe contacté)"
+        }
+      ]
+    }
+  ],
+  "seenByAlert": {
+    "37d20dbc-cc43-4896-b35e-9be777d5c3e8": [
+      "listing-1",
+      "1fe0cc9c-1c40-48fc-aae7-d8712f621676"
+    ]
+  },
+  "mockListings": [
+    {
+      "title": "PS4 Pro + manette neuve",
+      "description": "Annonce test injectée",
+      "category": "jeux-video",
+      "locationLabel": "Paris 75010",
+      "latitude": 48.8769,
+      "longitude": 2.3591,
+      "url": "https://example.invalid/test-new",
+      "id": "1fe0cc9c-1c40-48fc-aae7-d8712f621676",
+      "publishedAt": "2026-09-23T18:50:46.621Z"
+    },
+    {
+      "id": "listing-1",
+      "title": "PS4 + manette",
+      "description": "Console en bon état avec une manette officielle.",
+      "category": "jeux-video",
+      "locationLabel": "Paris 75010",
+      "latitude": 48.8769,
+      "longitude": 2.3591,
+      "url": "https://example.invalid/listing-1",
+      "publishedAt": "2026-09-23T18:50:46.425Z"
+    },
+    {
+      "id": "listing-2",
+      "title": "Canapé 3 places gris",
+      "description": "Canapé confortable, à venir récupérer rapidement.",
+      "category": "meubles",
+      "locationLabel": "Lyon 69003",
+      "latitude": 45.7597,
+      "longitude": 4.8567,
+      "url": "https://example.invalid/listing-2",
+      "publishedAt": "2026-09-23T18:50:46.425Z"
+    },
+    {
+      "id": "listing-3",
+      "title": "Livres Pokémon lot de 5",
+      "description": "Livres jeunesse Pokémon en très bon état.",
+      "category": "livres",
+      "locationLabel": "Lille 59000",
+      "latitude": 50.6292,
+      "longitude": 3.0573,
+      "url": "https://example.invalid/listing-3",
+      "publishedAt": "2026-09-23T18:50:46.425Z"
+    }
+  ],
+  "notificationSettings": {
+    "mockEnabled": true,
+    "discordEnabled": false
+  },
+  "lastCheckAt": "2026-09-23T18:50:46.633Z"
+}
